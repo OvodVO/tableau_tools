@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TableauTweaker
+namespace WashU.BatemanLab.MassSpec.TableauTweaker
 {
     static class Program
     {
