@@ -13,10 +13,25 @@ namespace WashU.BatemanLab.MassSpec.TableauTweaker
 {
     public partial class MainForm : Form
     {
+        TableauWorkbook _tableauWorkbook;
+
         public MainForm()
         {
             InitializeComponent();
             this.Text = AssemblyProduct;
+            this._tableauWorkbook = new TableauWorkbook();
+        }
+
+        private void OpenTableauWorkbook()
+        {
+            OpenFileDialog _openDlg = new OpenFileDialog();
+            _openDlg.Filter = "Tableau workbook |*.twb; *.twbx";
+            _openDlg.Multiselect = false;
+
+            if (_openDlg.ShowDialog() == DialogResult.OK)
+            {
+                _tableauWorkbook.OpenFile(_openDlg.FileName);
+            }
         }
         public string AssemblyProduct
         {
@@ -29,6 +44,12 @@ namespace WashU.BatemanLab.MassSpec.TableauTweaker
                 }
                 return ((AssemblyProductAttribute)attributes[0]).Product;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenTableauWorkbook();
+            _tableauWorkbook.CleanWorkbook();
         }
     }
 }
